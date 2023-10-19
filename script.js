@@ -36,7 +36,7 @@ function showMovies(response) {
         movieEl.innerHTML = `
         <a href="#">
         <img src="${IMG_URL+poster_path}"
-        art="image" onclick="alert('영화아이디: ${id}')"></a>
+        art="image" onclick="alert('영화id: ${id}')"></a>
     <div class="movie-info">
         <h3>${title}</h3>
         <p class="overview">${overview}</p>
