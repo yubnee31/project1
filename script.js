@@ -51,23 +51,23 @@ function showMovies(response) {
 
 function search_btn() {
     const name_input = document.getElementById('input').value;
-    const card_arr = document.getElementsByClassName('movie');
+    const movie_arr = document.getElementsByClassName('movie');
   
-    const card_name_arr = [];
-    for (let i = 0; i < card_arr.length; i++) {
-      card_name_arr[i] = card_arr[i].getElementsByTagName('h3')[0].innerText;
-      card_arr[i].style = 'display:none';
+    const movie_name_arr = [];
+    for (let i = 0; i < movie_arr.length; i++) {
+        movie_name_arr[i] = movie_arr[i].getElementsByTagName('h3')[0].innerText;
+        movie_arr[i].style = 'display:none';
     }
   
     let movie_name = '';
-    for (let i = 0; i < card_name_arr.length; i++) {
-      movie_name = card_name_arr.filter(
+    for (let i = 0; i < movie_name_arr.length; i++) {
+      movie_name = movie_name_arr.filter(
         (el) => el.toUpperCase().indexOf(name_input.toUpperCase()) > -1
       )[i];
-      for (let i = 0; i < card_name_arr.length; i++) {
-        if (movie_name === card_name_arr[i]) {
-          card_arr[i].style = 'display:inline-block';
-        }
+      for (let i = 0; i < movie_name_arr.length; i++) {
+        if (movie_name === movie_name_arr[i]) {
+            movie_arr[i].style = 'display:inline-block';
+        } 
       }
     }
   }
