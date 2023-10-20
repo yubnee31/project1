@@ -30,12 +30,12 @@ function showMovies(response) {
     main.innerHTML = '';
 
     response.forEach(movie => {
-        const {title, poster_path, vote_average, overview, id} = movie;
+        const { title, poster_path, vote_average, overview, id } = movie;
         const movieEl = document.createElement('div');
         movieEl.classList.add('movie');
         movieEl.innerHTML = `
         <a href="#">
-        <img src="${IMG_URL+poster_path}"
+        <img src="${IMG_URL + poster_path}"
         art="image" onclick="alert('영화id: ${id}')"></a>
     <div class="movie-info">
         <h3>${title}</h3>
@@ -48,28 +48,35 @@ function showMovies(response) {
     })
 }
 
+function enterkey () {
+    if (window.event.keyCode==13) {
+        search_btn()
+    }
+}
+
+
+
 
 function search_btn() {
     const name_input = document.getElementById('input').value;
     const movie_arr = document.getElementsByClassName('movie');
-  
+
     const movie_name_arr = [];
     for (let i = 0; i < movie_arr.length; i++) {
         movie_name_arr[i] = movie_arr[i].getElementsByTagName('h3')[0].innerText;
         movie_arr[i].style = 'display:none';
     }
-  
+
     let movie_name = '';
     for (let i = 0; i < movie_name_arr.length; i++) {
-      movie_name = movie_name_arr.filter(
-        (el) => el.toUpperCase().indexOf(name_input.toUpperCase()) > -1
-      )[i];
-      for (let i = 0; i < movie_name_arr.length; i++) {
-        if (movie_name === movie_name_arr[i]) {
-            movie_arr[i].style = 'display:inline-block';
-        } 
-      }
+        movie_name = movie_name_arr.filter(
+            (el) => el.toUpperCase().indexOf(name_input.toUpperCase()) > -1
+        )[i];
+        for (let i = 0; i < movie_name_arr.length; i++) {
+            if (movie_name === movie_name_arr[i]) {
+                movie_arr[i].style = 'display:inline-block';
+            }
+        }
     }
-  }
-
+}
 
