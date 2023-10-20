@@ -5,7 +5,6 @@ const API_URL = BASE_URL + "/movie/top_rated?language=en-US&page=1&"
 const IMG_URL = "https://image.tmdb.org/t/p/w500";
 
 const main = document.getElementById("main");
-const form = document.getElementById("form");
 
 const options = {
     method: 'GET',
@@ -19,7 +18,8 @@ getMovies(API_URL);
 
 function getMovies(url) {
     fetch(url)
-        .then(response => response.json()).then(response => {
+        .then(response => response.json())
+        .then(response => {
             console.log(response.results);
             showMovies(response.results);
         })
@@ -49,10 +49,27 @@ function showMovies(response) {
 }
 
 
-form.addEventListener('submit', function(e) {
-	e.preventDefault();
-
-    console.log('제출');
-})
+function search_btn() {
+    const name_input = document.getElementById('input').value;
+    const card_arr = document.getElementsByClassName('movie');
+  
+    const card_name_arr = [];
+    for (let i = 0; i < card_arr.length; i++) {
+      card_name_arr[i] = card_arr[i].getElementsByTagName('h3')[0].innerText;
+      card_arr[i].style = 'display:none';
+    }
+  
+    let movie_name = '';
+    for (let i = 0; i < card_name_arr.length; i++) {
+      movie_name = card_name_arr.filter(
+        (el) => el.toUpperCase().indexOf(name_input.toUpperCase()) > -1
+      )[i];
+      for (let i = 0; i < card_name_arr.length; i++) {
+        if (movie_name === card_name_arr[i]) {
+          card_arr[i].style = 'display:inline-block';
+        }
+      }
+    }
+  }
 
 
