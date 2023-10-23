@@ -48,14 +48,6 @@ function showMovies(response) {
     })
 }
 
-function enterkey () {
-    if (window.event.keyCode==13) {
-        search_btn()
-    }
-}
-
-
-
 
 function search_btn() {
     const name_input = document.getElementById('input').value;
